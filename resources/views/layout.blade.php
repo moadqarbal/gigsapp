@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-white py-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Gigs App</a>
+          <a class="navbar-brand" href="{{ url('/') }}">Gigs App</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -29,20 +29,9 @@
         </div>
       </nav>
 
-      <div class="py-5 bg-danger">
-        <div class="custom-section text-center">
-            <h2 class="mb-3 text-white text-uppercase">Section Title</h2>
-            <p class="mb-4 lead text-white text-capitalize">This is the description of the section. It provides some context and information about the section content.</p>
-            <button class="btn btn-outline border-white text-white btn-lg text-capitalize text-uppercase">Sign Up to List a Gig</button>
-        </div>
-    </div>
+      
 
-    <div class="search-box p-2">
-        <form class="d-flex">
-            <input class="form-control me-2 flex-grow-1" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-danger" type="submit">Search</button>
-        </form>
-    </div>
+    
 
     
     @yield('content')
