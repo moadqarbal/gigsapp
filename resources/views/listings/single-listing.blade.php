@@ -1,6 +1,4 @@
-@extends('layout')
-
-@section('content')
+<x-layout>
 @include('partials._search')
 
 <div class="gigs-list container-fluid">
@@ -10,17 +8,20 @@
             <div class="card bg-light mt-5">
               
               <div class="card-body text-center">
-                <img src="images/no-image.png" alt="Logo">
+                <div class="row">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-4">
+                    <img class="img-thumbnail rounded-start" src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}" alt="Logo">
+                  </div>
+                  <div class="col-md-4"></div>
+                </div>
+                
                 <!-- Card title -->
                 <h5 class="card-title">{{ $listing->title }}</h5>
                 <!-- Small card title -->
                 <h6 class="card-subtitle mb-2 text-muted">{{ $listing->company }}</h6>
                 
-                <p class="card-text">
-                  <span class="badge rounded-pill bg-dark text-white me-1">api</span>
-                  <span class="badge rounded-pill bg-dark text-white me-1">vue</span>
-                  <span class="badge rounded-pill bg-dark text-white">laravel</span>
-                </p>
+                <x-listing-tags :tagsCsv="$listing->tags" />
                 
                 <p class="card-text">
                   <i class="bi bi-geo-alt-fill me-1"></i> {{ $listing->location }}
@@ -42,13 +43,24 @@
                 
               </div>
             </div>
+
+            <div class="card bg-light mt-2 p-3">
+              <a class="text-dark" href="{{ url('listings/' . $listing->id . '/edit') }}">Edit</a>
+            </div>
+
+            <div class="card bg-light mt-2 p-3">
+              <form action="{{ route('listings.destroy', $listing->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button class="text-dark" >Delete</button>
+              </form>
+              
+            </div>
+
+            <div style="margin-bottom: 150px"></div>
           </div>
-
-        
-        
-
 
         
     </div> <!-- end listings row -->
 </div>
-@endsection
+</x-layout>

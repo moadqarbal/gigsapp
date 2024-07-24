@@ -4,7 +4,7 @@
     <div class="card bg-light mb-3">
         <div class="row g-0">
             <div class="col-md-4">
-                <a href="{{ url('listings/' . $listing->id) }}"><img src="{{ asset('images/no-image.png') }}" class="img-fluid rounded-start" alt="..."></a>
+                <a href="{{ url('listings/' . $listing->id) }}"><img src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}" class="img-fluid rounded-start" alt="..."></a>
             </div>
             <div class="col-md-8">
                 <div class="card-body">

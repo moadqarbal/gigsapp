@@ -1,6 +1,4 @@
-@extends('layout')
-
-@section('content')
+<x-layout>
 @include('partials._hero')
 @include('partials._search')
 
@@ -11,6 +9,10 @@
             <x-listing-card :listing="$listing" />
         @endforeach
         
+        <div class="py-3">
+            {{ $listings->links() }}
+        </div>
+
     </div> <!-- end listings row -->
 </div>
-@endsection
+</x-layout>
